@@ -18,6 +18,8 @@ classifiers = [
 ]
 dependencies = [
     "cdsapi",
+    "matplotlib",
+    "netcdf4",
     "xarray",
 ]
 

@@ -11,23 +11,50 @@ cads-api-client==1.0.3
 cdsapi==0.7.0
     # via cds-for-sgc (pyproject.toml)
 certifi==2024.6.2
-    # via requests
+    # via
+    #   netcdf4
+    #   requests
+cftime==1.6.4
+    # via netcdf4
 charset-normalizer==3.3.2
     # via requests
+contourpy==1.2.1
+    # via matplotlib
+cycler==0.12.1
+    # via matplotlib
+fonttools==4.53.0
+    # via matplotlib
 idna==3.7
     # via requests
+kiwisolver==1.4.5
+    # via matplotlib
+matplotlib==3.9.0
+    # via cds-for-sgc (pyproject.toml)
 multiurl==0.3.1
     # via cads-api-client
+netcdf4==1.7.1
+    # via cds-for-sgc (pyproject.toml)
 numpy==2.0.0
     # via
+    #   cftime
+    #   contourpy
+    #   matplotlib
+    #   netcdf4
     #   pandas
     #   xarray
 packaging==24.1
-    # via xarray
+    # via
+    #   matplotlib
+    #   xarray
 pandas==2.2.2
     # via xarray
+pillow==10.3.0
+    # via matplotlib
+pyparsing==3.1.2
+    # via matplotlib
 python-dateutil==2.9.0.post0
     # via
+    #   matplotlib
     #   multiurl
     #   pandas
 pytz==2024.1

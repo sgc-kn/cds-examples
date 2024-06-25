@@ -1,7 +1,7 @@
-.PHONY: notebook
-notebook: venv
+notebook: setup
 	venv/bin/jupyter-notebook
 
+setup: venv
 venv: requirements.txt
 	# setup bare venv
 	python -m venv venv
@@ -11,6 +11,14 @@ venv: requirements.txt
 	# development tools
 	venv/bin/pip install pip-tools notebook
 	touch venv
+
+setup: ~/.cdsapirc
+~/.cdsapirc:
+	@echo Please set your CDS API key in the ~/.cdsapirc text file.
+	@echo It should look like this:
+	@echo 'url: https://cds.climate.copernicus.eu/api/v2'
+	@echo 'key: <UID>:<API key>'
+	@false
 
 .PHONY: update
 update: venv
