@@ -18,16 +18,26 @@ cftime==1.6.4
     # via netcdf4
 charset-normalizer==3.3.2
     # via requests
+click==8.1.7
+    # via dask
+cloudpickle==3.0.0
+    # via dask
 contourpy==1.2.1
     # via matplotlib
 cycler==0.12.1
     # via matplotlib
+dask==2024.6.2
+    # via cds-for-sgc (pyproject.toml)
 fonttools==4.53.0
     # via matplotlib
+fsspec==2024.6.0
+    # via dask
 idna==3.7
     # via requests
 kiwisolver==1.4.5
     # via matplotlib
+locket==1.0.0
+    # via partd
 matplotlib==3.9.0
     # via cds-for-sgc (pyproject.toml)
 multiurl==0.3.1
@@ -44,10 +54,13 @@ numpy==2.0.0
     #   xarray
 packaging==24.1
     # via
+    #   dask
     #   matplotlib
     #   xarray
 pandas==2.2.2
     # via xarray
+partd==1.4.2
+    # via dask
 pillow==10.3.0
     # via matplotlib
 pyparsing==3.1.2
@@ -61,6 +74,8 @@ pytz==2024.1
     # via
     #   multiurl
     #   pandas
+pyyaml==6.0.1
+    # via dask
 requests==2.32.3
     # via
     #   cads-api-client
@@ -68,6 +83,10 @@ requests==2.32.3
     #   multiurl
 six==1.16.0
     # via python-dateutil
+toolz==0.12.1
+    # via
+    #   dask
+    #   partd
 tqdm==4.66.4
     # via
     #   cdsapi
