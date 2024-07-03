@@ -8,8 +8,6 @@ venv: requirements.txt
 	venv/bin/pip install --upgrade pip
 	# pinned dependencies
 	venv/bin/pip install -r requirements.txt
-	# development tools
-	venv/bin/pip install pip-tools notebook
 	touch venv
 
 setup: ~/.cdsapirc
@@ -20,15 +18,14 @@ setup: ~/.cdsapirc
 	@echo 'key: <UID>:<API key>'
 	@false
 
-.PHONY: update
-update: venv
+upgrade-dependencies: venv
+	venv/bin/pip install --upgrade pip pip-tools
 	# derive requirements.txt from pyproject.toml
 	# (we pin and track all versions in requirements.txt)
-	venv/bin/pip-compile --strip-extras --quiet
-	# install the updated version in the virtual environment
+	venv/bin/pip-compile --upgrade --strip-extras --quiet
+	# install the updated versions in the virtual environment
 	venv/bin/pip install -r requirements.txt
 	touch venv
 
-.PHONY: clean
 clean:
 	rm -rf venv

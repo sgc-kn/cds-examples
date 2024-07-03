@@ -21,6 +21,7 @@ dependencies = [
     "dask",
     "matplotlib",
     "netcdf4",
+    "notebook",
     "xarray",
 ]
 
