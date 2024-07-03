@@ -40,3 +40,10 @@ Each notebook provides usage examples for one CDS dataset.
 **Lake Surface Water Temperature:**
 [CDS dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-lake-water-temperature)
 [Notebook](./lake-surface-water-temperature.ipynb)
+
+---
+
+### License
+
+We distribute our work under the MIT license. We provide the full
+license terms in the [`LICENSE`](./LICENSE) file.
