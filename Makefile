@@ -29,11 +29,6 @@ update: venv
 	venv/bin/pip install -r requirements.txt
 	touch venv
 
-setup: data/esa-cci-lakes.csv
-data/esa-cci-lakes.csv:
-	mkdir -p data
-	wget https://zenodo.org/records/6699376/files/ESA_CCI_static_lake_mask_v2_1km_UoR_metadata_fv2.1_06Oct2021.csv?download=1 -O $@
-
 .PHONY: clean
 clean:
-	rm -rf venv esa-cci-lakes.csv
+	rm -rf venv
