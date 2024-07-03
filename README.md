@@ -14,7 +14,7 @@ City Konstanz][sgc] program.
 
 The notebooks require a few Python dependencies. We list them in
 [`pyproject.toml`](pyproject.toml). We develop and test the notebooks
-on Python 3.23 with the specific package versions listed in
+on Python 3.12 with the specific package versions listed in
 [`requirements.txt`](requirements.txt).
 
 We recommend installing the dependencies into a virtual environment.
