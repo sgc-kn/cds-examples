@@ -3,10 +3,11 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cds-for-sgc"
+name = "cds-examples"
 version = "0.0.1"
 authors = [
-  { name="Patrik Keller", email="git@pkel.dev" },
+  { name="Patrik Keller", email="patrik.keller@konstanz.de" },
+  { name="Tim Tewes", email="tim.tewes@konstanz.de" },
 ]
 description = ""
 readme = "README.md"
@@ -22,9 +23,10 @@ dependencies = [
     "matplotlib",
     "netcdf4",
     "notebook",
+    "rasterio",
     "xarray",
 ]
 
 [project.urls]
-Homepage = "https://github.com/pypa/sampleproject"
-Issues = "https://github.com/pypa/sampleproject/issues"
+Homepage = "https://github.com/sgc-kn/cds-examples"
+Issues = "https://github.com/sgc-kn/cds-examples/issues"
