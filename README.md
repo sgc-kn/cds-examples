@@ -37,9 +37,15 @@ execute the above commands in one go.
 
 Each notebook provides usage examples for one CDS dataset.
 
-**Lake Surface Water Temperature:**
+**Heat Wave Days:**
+[CDS dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-heat-and-cold-spells)
+[Notebook](./sis-heat-and-cold-spells.ipynb)
+[CSV Output (Germany)](./sis-heat-and-cold-spells.csv.zip)
+
+**Satellite Lake Water Temperature:**
 [CDS dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-lake-water-temperature)
-[Notebook](./lake-surface-water-temperature.ipynb)
+[Notebook](./satellite-lake-water-temperature.ipynb)
+[CSV Output (Bodensee)](./satellite-lake-water-temperature.csv)
 
 ---
 
