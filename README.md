@@ -12,9 +12,9 @@ City Konstanz][sgc] program.
 
 ---
 
-The notebooks require a few Python dependencies. We list them in
-[`pyproject.toml`](pyproject.toml). We develop and test the notebooks
-on Python 3.12 with the specific package versions listed in
+The notebooks and scripts require a few Python dependencies. We list
+them in [`pyproject.toml`](pyproject.toml). We develop and test  on
+Python 3.12 with the specific package versions listed in
 [`requirements.txt`](requirements.txt).
 
 We recommend installing the dependencies into a virtual environment.
@@ -28,14 +28,11 @@ venv/bin/pip install -r requirements.txt
 venv/bin/jupyter-notebook
 ```
 
-Alternatively, if you have Make installed, run `make notebook` to
-execute the above commands in one go.
-
 ----
 
 ### Examples
 
-Each notebook provides usage examples for one CDS dataset.
+Each notebook/script provides usage examples for one CDS dataset.
 
 **Heat Wave Days:**
 [CDS dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-heat-and-cold-spells)
@@ -46,6 +43,11 @@ Each notebook provides usage examples for one CDS dataset.
 [CDS dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-lake-water-temperature)
 [Notebook](./satellite-lake-water-temperature.ipynb)
 [CSV Output (Bodensee)](./satellite-lake-water-temperature.csv)
+
+**Climate indicators for Europe from 1940 to 2100:**
+[CDS dataset](https://cds-beta.climate.copernicus.eu/datasets/sis-ecde-climate-indicators)
+[Script](./sis-ecde-climate-indicators.sh)
+[Additional system dependency: CDO](https://code.mpimet.mpg.de/projects/cdo/wiki)
 
 ---
 
