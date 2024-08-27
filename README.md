@@ -35,19 +35,20 @@ venv/bin/jupyter-notebook
 Each notebook/script provides usage examples for one CDS dataset.
 
 **Heat Wave Days:**
-[CDS dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-heat-and-cold-spells)
-[Notebook](./sis-heat-and-cold-spells.ipynb)
-[CSV Output (Germany)](./sis-heat-and-cold-spells.csv.zip)
+- [CDS dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-heat-and-cold-spells)
+- [Notebook](./sis-heat-and-cold-spells.ipynb)
+- [CSV Output (Germany)](./sis-heat-and-cold-spells.csv.zip)
 
 **Satellite Lake Water Temperature:**
-[CDS dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-lake-water-temperature)
-[Notebook](./satellite-lake-water-temperature.ipynb)
-[CSV Output (Bodensee)](./satellite-lake-water-temperature.csv)
+- [CDS dataset](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-lake-water-temperature)
+- [Notebook](./satellite-lake-water-temperature.ipynb)
+- [CSV Output (Bodensee)](./satellite-lake-water-temperature.csv)
 
 **Climate indicators for Europe from 1940 to 2100:**
-[CDS dataset](https://cds-beta.climate.copernicus.eu/datasets/sis-ecde-climate-indicators)
-[Script](./sis-ecde-climate-indicators.py)
-[Additional system dependency: CDO](https://code.mpimet.mpg.de/projects/cdo/wiki)
+- [CDS dataset](https://cds-beta.climate.copernicus.eu/datasets/sis-ecde-climate-indicators)
+- [Script](./sis-ecde-climate-indicators.py)
+- [Additional system dependency: CDO](https://code.mpimet.mpg.de/projects/cdo/wiki)
+- [CSV Output](./sis-ecde-climate-indicators.zip)
 
 ---
 
