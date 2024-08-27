@@ -46,7 +46,7 @@ Each notebook/script provides usage examples for one CDS dataset.
 
 **Climate indicators for Europe from 1940 to 2100:**
 [CDS dataset](https://cds-beta.climate.copernicus.eu/datasets/sis-ecde-climate-indicators)
-[Script](./sis-ecde-climate-indicators.sh)
+[Script](./sis-ecde-climate-indicators.py)
 [Additional system dependency: CDO](https://code.mpimet.mpg.de/projects/cdo/wiki)
 
 ---

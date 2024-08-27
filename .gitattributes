@@ -1,2 +1,3 @@
 satellite-lake-water-temperature.csv filter=lfs diff=lfs merge=lfs -text
 sis-heat-and-cold-spells.csv.zip filter=lfs diff=lfs merge=lfs -text
+sis-ecde-climate-indicators.zip filter=lfs diff=lfs merge=lfs -text
