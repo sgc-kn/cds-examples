@@ -18,8 +18,14 @@ data_path = "data/sis-ecde-climate-indicators"
 cds_api_key = None
 
 areas = dict(
-        konstanz = "-sellonlatbox,9,9.5,47,47.5"
+        berlin = dict(lat = 52.518611, lon = 13.408333),
+        hamburg = dict(lat = 53.550556, lon = 9.993333),
+        konstanz = dict(lat = 47.66336, lon = 9.17598),
+        madrid = dict(lat = 40.4125, lon = -3.703889),
+        mailand = dict(lat = 45.4625, lon = 9.186389),
+        paris = dict(lat = 48.856667, lon = 2.351667),
         )
+# EPSG:4326 CRS (WGS84 with decimal degree); data from Wikipedia
 
 #
 # Password/Key Management
@@ -159,32 +165,38 @@ def per_nc(nc_file):
         per_nc_var(nc_file, var)
 
 def per_nc_var(nc_file, var):
-    for area in areas.keys():
-        per_nc_var_area(nc_file, var, area)
-
-def per_nc_var_area(nc_file, var, area):
     print(nc_file + ":" + var)
 
-    # extract data
+    # extract metadata
     meta = meta_of_nc_var(nc_file, var)
-    ts = ts_of_nc_var_area(nc_file, var, area)
 
     # extend metadata
-    meta['area'] = area
-    meta['area-cdo-op'] = areas[area]
+    meta['areas'] = areas.copy()
+    meta['areas']['_crs'] = "EPSG:4326"
 
-    # write timeseries to csv
+    # prepare folder and file name
     os.makedirs(data_path + '/csv', exist_ok=True)
     nc_name = os.path.basename(nc_file).removesuffix('.nc')
-    csv_path = f"{data_path}/csv/{nc_name}-{var}-{area}.csv"
-    ts.to_csv(csv_path, sep=',')
 
     # write metadata to json
-    json_path = f"{data_path}/csv/{nc_name}-{var}-{area}.json"
+    json_path = f"{data_path}/csv/{nc_name}-{var}.json"
     with open(json_path, 'w') as f:
         json.dump(meta, f)
 
-    return ts, meta
+    # collect timeseries for all areas
+    tss = []
+    for area, point in areas.items():
+        ts = ts_of_nc_var_point(nc_file, var, point)
+        ts = ts.rename(columns = {'value': area})
+        tss.append(ts)
+
+    # merge timeseries into single dataframe
+    df = pandas.concat(tss, axis=1)
+
+    # write dataframe to csv
+    csv_path = f"{data_path}/csv/{nc_name}-{var}.csv"
+    df.to_csv(csv_path, sep=',')
+
 
 def meta_of_nc_var(nc_file, var):
     ds = netCDF4.Dataset(nc_file)
@@ -194,23 +206,69 @@ def meta_of_nc_var(nc_file, var):
             meta[attr] = ds.variables[var].getncattr(attr)
     return meta
 
-def ts_of_nc_var_area(nc_vile, var, area):
-    operators = ['-outputtab,date,value,nohead', '-fldmean', areas[area]]
+def ts_of_nc_var_point(nc_vile, var, point):
+    nnf= nearest_neighbor(point) # file with nearest neighbour grid
 
+    area_op = '-remapnn,' + nnf.name
+
+    operators = ['-outputtab,date,value,nohead', area_op]
+
+    # fix broken CDS grid description, when applicable
     gridf = fixed_grid(nc_file)
     if gridf is not None:
         operators.append('-setgrid,' + gridf.name)
 
+    #
+    # Apply CDO operators
+    #
+
+    # cdo clutters the stdout of outputtab with info of the remap operator
+    # we circumvent this by applying the outputtab operator separately
+
+    # fist apply all operators but outputtab
+    ncf = tempfile.NamedTemporaryFile('wt',
+                                     prefix=sys.argv[0] + '.tmp-'
+                                     , suffix='.nc'
+                                     , delete_on_close=False)
+    ncf.close()
+    cmd = ['cdo'] + operators[1:] + [nc_file, ncf.name]
+    subprocess.run(cmd, text=True, check=True)
+
+    # then apply outputtab separately
     csvf = tempfile.NamedTemporaryFile('wt',
                                         prefix=sys.argv[0] + '.tmp-'
                                         , suffix='.csv'
                                         , delete_on_close=False)
 
-    proc = subprocess.run(['cdo'] + operators + [nc_file],
-                          text=True, stdout=csvf, check=True)
+    cmd = ['cdo'] + operators[:1] + [ncf.name]
+    proc = subprocess.run(cmd, text=True, stdout=csvf, check=True)
+
+    #
+    # Parse the csv into a pandas dataframe
+    #
 
     df = pandas.read_csv(csvf.name, names=['date', 'value'], sep=r'\s+')
+    df = df.set_index('date')
     return df
+
+def nearest_neighbor(point):
+    gridf = tempfile.NamedTemporaryFile('wt',
+                                        prefix=sys.argv[0] + '.tmp-'
+                                        , suffix='.grid'
+                                        , delete_on_close=False)
+
+    lines = [
+            "gridtype = lonlat",
+            "xsize = 1",
+            "ysize = 1",
+            f"xfirst = {point['lon']}",
+            f"yfirst = {point['lat']}",
+            ]
+
+    print(*lines, sep='\n', file=gridf)
+    gridf.close()
+
+    return gridf
 
 def fixed_grid(nc_file):
     gridf = tempfile.NamedTemporaryFile('wt',
