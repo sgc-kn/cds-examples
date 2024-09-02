@@ -28,6 +28,7 @@ areas = dict(
         madrid = dict(lat = 40.4125, lon = -3.703889, name = "Madrid"),
         mailand = dict(lat = 45.4625, lon = 9.186389, name = "Mailand"),
         paris = dict(lat = 48.856667, lon = 2.351667, name = "Paris"),
+        stuttgart = dict(lat = 48.775556, lon = 9.182778, name= "Stuttgart"),
         wien = dict(lat = 48.208174, lon = 16.373819, name = "Wien"),
         zuerich = dict(lat = 47.376887, lon = 8.541694, name = "Zürich"),
         )
