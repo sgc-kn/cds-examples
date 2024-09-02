@@ -18,21 +18,33 @@ data_path = "data/sis-ecde-climate-indicators"
 cds_api_key = None
 
 areas = dict(
+        aalen = dict(lat = 48.837222, lon = 10.093611, name = "Aalen"),
+        bamberg = dict(lat = 49.891667, lon = 10.891667, name = "Bamberg"),
         berlin = dict(lat = 52.518611, lon = 13.408333, name = "Berlin"),
         frankfurt = dict(lat = 50.110924, lon = 8.682127, name = "Frankfurt"),
+        freiburg = dict(lat = 47.994828, lon = 7.849881, name = "Freiburg"),
         hamburg = dict(lat = 53.550556, lon = 9.993333, name = "Hamburg"),
+        heidelberg = dict(lat = 49.41032, lon = 8.69707, name = "Heidelberg"),
+        heidenheim = dict(lat = 48.67668, lon = 10.15406, name = "Heidenheim"),
         innsbruck = dict(lat = 47.269212, lon = 11.404102, name = "Innsbruck"),
-        konstanz = dict(lat = 47.66336, lon = 9.17598, name = "Konstanz"),
+        karlsruhe = dict(lat = 49.014, lon = 8.4043, name = "Karlsruhe"),
+        kempten = dict(lat = 47.733333, lon = 10.316667, name = "Kempten"),
         koeln = dict(lat = 50.937531, lon = 6.960279, name = "Köln"),
+        konstanz = dict(lat = 47.66336, lon = 9.17598, name = "Konstanz"),
         leipzig = dict(lat = 51.339695, lon = 12.373075, name = "Leipzig"),
         madrid = dict(lat = 40.4125, lon = -3.703889, name = "Madrid"),
         mailand = dict(lat = 45.4625, lon = 9.186389, name = "Mailand"),
+        mannheim = dict(lat = 49.48776, lon = 8.46622, name = "Mannheim"),
         paris = dict(lat = 48.856667, lon = 2.351667, name = "Paris"),
+        pforzheim = dict(lat = 48.8907, lon = 8.70245, name = "Pforzheim"),
+        regensburg = dict(lat = 49.01525, lon = 12.10175, name = "Regensburg"),
         stuttgart = dict(lat = 48.775556, lon = 9.182778, name= "Stuttgart"),
+        ulm = dict(lat = 48.400833, lon = 9.987222, name = "Ulm"),
         wien = dict(lat = 48.208174, lon = 16.373819, name = "Wien"),
         zuerich = dict(lat = 47.376887, lon = 8.541694, name = "Zürich"),
         )
 # EPSG:4326 CRS (WGS84 with decimal degree); data from Wikipedia
+
 
 #
 # Password/Key Management
